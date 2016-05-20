@@ -1,7 +1,21 @@
-#studentsSection, #subjectsSection, #gradesSection {
-  display: none;
+#studentsSection,
+#subjectsSection,
+#gradesSection {
+    display: none;
 }
 
-#studentsSection:target, #subjectsSection:target, #gradesSection:target {
-  display: block;
+#studentsSection:target,
+#subjectsSection:target,
+#gradesSection:target {
+    display: block;
+}
+
+a {
+    color:inherit;
+    text-decoration:none;
+}
+
+a:hover {
+    color: blue;
+    text-decoration:underline;
 }

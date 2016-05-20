@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="manager_styles.css">
+    <meta charset="utf-8">
+    <title>University manager</title>
+    <meta name="description" content="Page to view and manage students data.">
+</head>
+
+<body>
+    <header>
+        <img src="logo.png" alt="Grumpy logo" style="width:150px;height:150px;">
+        <h1>University manager</h1>
+    </header>
+
+    <nav>
+        <a href="#studentsSection">Students</a>
+        <br>
+        <a href="#subjectsSection">Subjects</a>
+        <br>
+    </nav>
+
+    <article id="studentsSection">
+        <header>
+            <h2>Students</h2>
+        </header>
+        <table>
+            <caption>Students</caption>
+            <tr>
+                <th>Id
+                    <input type="number" name="index" placeholder="Search...">
+                </th>
+                <th>Name
+                    <input type="text" name="name" placeholder="Search...">
+                </th>
+                <th>Surname
+                    <input type="text" name="surname" placeholder="Search...">
+                </th>
+                <th>Birthdate
+                    <input type="text" name="date" placeholder="Search...">
+                    <form>
+                        <input type="radio" name="compare" value="below" checked>under
+                        <input type="radio" name="compare" value="in">in
+                        <input type="radio" name="compare" value="after">above
+                    </form>
+                </th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number" readonly name="index" value="112160">
+                </td>
+                <td>
+                    <input type="text" required placeholder="name" name="name" value="Kasia">
+                </td>
+                <td>
+                    <input type="text" required placeholder="surname" name="surname" value="Jakaśtam">
+                </td>
+                <td>
+                    <input type="date" name="date" value="1993-04-01">
+                </td>
+                <td>
+                    <button type="button">Delete</button>
+                    <button type="button">Edit</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                    <input type="text" required placeholder="name" name="name">
+                </td>
+                <td>
+                    <input type="text" required placeholder="surname" name="surname">
+                </td>
+                <td>
+                    <input type="date" name="date">
+                </td>
+                <td>
+                    <button type="button">Add new student</button>
+                </td>
+            </tr>
+        </table>
+    </article>
+
+    <article id="subjectsSection">
+        <header>
+            <h2>Subjects</h2>
+        </header>
+        <table>
+            <caption>Subjects</caption>
+            <tr>
+                <th>Subject </th>
+                <th>Teacher
+                    <input type="text" name="name" placeholder="teacher name"> </th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" required placeholder="sujects name" name="subjectName" value="Subject1">
+                </td>
+                <td>
+                    <input type="text" required placeholder="teacher name" name="teacher" value="Mr. Jones">
+                </td>
+                <td>
+                    <a href="#gradesSection">see grades</a>
+                    <button type="button">Delete</button>
+                    <button type="button">Edit</button>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" placeholder="sujects name" name="subjectName">
+                </td>
+                <td>
+                    <input type="text" placeholder="teacher name" name="teacher">
+                </td>
+                <td>
+                    <button type="button">Add new subject</button>
+                </td>
+            </tr>
+        </table>
+    </article>
+
+    <article id="gradesSection">
+        <header><h2>Grades</h2></header>
+        <h4>select subject</h4>
+        <form>
+            <select name="subject">
+                <option value="value1">Subject1</option>
+                <option value="value2" selected>Subject2</option>
+            </select>
+        </form>
+        <table>
+            <caption>Grades</caption>
+            <tr>
+                <th>Student
+                    <input type="text" name="name" placeholder="Search...">
+                </th>
+                <th>Grade
+                    <input type="number" required min="2.0" max="5.0" step="0.5" name="grade" value="3.0">
+                    <br>
+                    <input type="radio" name="compare" value="below" checked>under
+                    <input type="radio" name="compare" value="in">in
+                    <input type="radio" name="compare" value="after">above</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" required readonly name="studentName" value="Kasia">
+                </td>
+                <td>
+                    <input type="number" required min="2.0" max="5.0" step="0.5" name="grade" value="3.0">
+                </td>
+                <td>
+                    <input type="date" required name="date" value="2016-05-05">
+                </td>
+                <td>
+                    <button type="button">Delete</button>
+                    <button type="button">Edit</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" required name="studentName" placeholder="name">
+                </td>
+                <td>
+                    <input type="number" required min="2.0" max="5.0" step="0.5" name="grade" placeholder="grade">
+                </td>
+                <td>
+                    <input type="date" required name="date">
+                </td>
+                <td>
+                    <button type="button">Add new grade</button>
+                </td>
+            </tr>
+        </table>
+    </article>
+
+    <footer>
+        <p>Created by: Paulina Sadowska</p>
+        <p>University page: <a href="http://www.put.poznan.pl/">www.put.poznan.pl</a></p>
+    </footer>
+</body>
+
+</html>

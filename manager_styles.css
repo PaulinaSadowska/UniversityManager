@@ -1,0 +1,7 @@
+#studentsSection, #subjectsSection, #gradesSection {
+  display: none;
+}
+
+#studentsSection:target, #subjectsSection:target, #gradesSection:target {
+  display: block;
+}

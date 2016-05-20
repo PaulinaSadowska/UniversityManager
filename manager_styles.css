@@ -16,7 +16,7 @@ a {
 }
 
 a:hover {
-    color: blue;
+    color: #EE9A00;
     text-decoration: underline;
 }
 
@@ -71,18 +71,15 @@ footer {
     font-size: 12px;
     text-align: center;
     padding: 0.6em;
-    width:100%;
+    width: 100%;
     position: absolute;
     bottom: 0;
     left: 0;
 }
 
-footer p a:hover {
-    color: #b6b6b6;
-    text-decoration: underline;
-}
-
 article {
+    color: #212121;
+    padding: 0.4em;
     margin-top: 1em;
     margin-left: 1em;
     margin-right: 1em;
@@ -92,20 +89,76 @@ article {
     box-shadow: 0px 0px 5px #aaa;
 }
 
+article header {
+    font-family: "Roboto Condensed";
+    font-size: 1.2em;
+    font-style: bold;
+    text-align: center;
+}
+
+input {
+    display: block;
+    border: none;
+    background: inherit;
+    color: #212121;
+}
+
+form li label{
+    font-size: 12px;
+}
+
+article table tr th input{
+    color: #ddd;
+}
+
+article table th {
+    background: #3f51bf;
+    color: white;
+    font-weight: 100;
+    padding: 0.4em;
+    text-align: center;
+    margin: 0;
+}
+
+article table {
+    font-family: "Roboto Condensed";
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+}
+tr {
+    background-color: #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+article table caption {
+    font-family: inherit;
+    font-size: 1.2em;
+    margin-bottom: 0.2em;
+    font-style: bold;
+    text-align: center;
+}
+
 nav {
-    padding-top: 0.5em;
-    flex: 1 1 180px;
+    color: #212121;
+    padding: 0.5em;
+    flex: 1 1 160px;
     text-align: center;
     background: white;
     box-shadow: 0px 0px 5px #aaa;
     font-family: "Roboto Condensed";
 }
 
-nav li{
+nav li {
     padding-top: 0.2em;
 }
 
 body {
     background: #eeeeee;
     margin: 0;
+    font-family: RobotoDraft, Helvetica;
 }

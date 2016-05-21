@@ -1,0 +1,30 @@
+@media print {
+    body {
+        background: #fff;
+        color: #000;
+    }
+    .mainHeader,
+    nav,
+    footer,
+    button,
+    .search,
+    .addNew,
+    .actions,
+    article header{
+        display: none;
+    }
+    table {
+        border-collapse: collapse;
+    }
+    tr {
+        border: solid;
+        border-width: 1px 0;
+    }
+    article table th {
+        color: black;
+    }
+    article table tr td input {
+        text-align: center;
+        width: 100%;
+    }
+}

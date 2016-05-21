@@ -3,7 +3,9 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="manager_styles.css">
+    <link rel="stylesheet" type="text/css" href="print.css">
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1">
     <title>University manager</title>
     <meta name="description" content="Page to view and manage students data.">
 </head>
@@ -34,23 +36,23 @@
                 <caption>List of Students</caption>
                 <tr>
                     <th>Id
-                        <input type="number" name="index" placeholder="Search...">
+                        <input class="search" type="number" name="index" placeholder="Search...">
                     </th>
                     <th>Name
-                        <input type="text" name="name" placeholder="Search...">
+                        <input class="search" type="text" name="name" placeholder="Search...">
                     </th>
                     <th>Surname
-                        <input type="text" name="surname" placeholder="Search...">
+                        <input class="search" type="text" name="surname" placeholder="Search...">
                     </th>
                     <th>Birthdate
-                        <input type="text" name="date" placeholder="Search...">
-                        <select name="comparator">
+                        <input class="search" type="text" name="date" placeholder="Search...">
+                        <select class="search" name="comparator">
                             <option value="below">below</option>
                             <option value="in" selected>in</option>
                             <option value="above" selected>above</option>
                         </select>
                     </th>
-                    <th>Actions</th>
+                    <th class="actions">Actions</th>
                 </tr>
                 <tr>
                     <td>
@@ -65,12 +67,12 @@
                     <td>
                         <input type="date" name="date" value="1993-04-01">
                     </td>
-                    <td>
+                    <td class="actions">
                         <button type="button">Delete</button>
                         <button type="button">Edit</button>
                     </td>
                 </tr>
-                <tr>
+                <tr class="addNew">
                     <td>
 
                     </td>
@@ -99,8 +101,8 @@
                 <tr>
                     <th>Subject </th>
                     <th>Teacher
-                        <input type="text" name="name" placeholder="teacher name"> </th>
-                    <th>Actions</th>
+                        <input class="search" type="text" name="name" placeholder="teacher name"> </th>
+                    <th class="actions">Actions</th>
                 </tr>
                 <tr>
                     <td>
@@ -109,14 +111,14 @@
                     <td>
                         <input type="text" required placeholder="teacher name" name="teacher" value="Mr. Jones">
                     </td>
-                    <td>
+                    <td class="actions">
                         <a href="#gradesSection">see grades</a>
                         <button type="button">Delete</button>
                         <button type="button">Edit</button>
 
                     </td>
                 </tr>
-                <tr>
+                <tr class="addNew">
                     <td>
                         <input type="text" placeholder="sujects name" name="subjectName">
                     </td>
@@ -144,20 +146,20 @@
                 <caption>Grades</caption>
                 <tr>
                     <th>Student
-                        <input type="text" name="name" placeholder="Search...">
+                        <input class="search" type="text" name="name" placeholder="Search...">
                     </th>
                     <th>Grade
-                        <input type="number" required min="2.0" max="5.0" step="0.5" name="grade" value="3.0">
+                        <input class="search" type="number" required min="2.0" max="5.0" step="0.5" name="grade" value="3.0">
                         <br>
 
-                        <select name="comparator">
+                        <select class="search" name="comparator">
                             <option value="below">below</option>
                             <option value="in" selected>in</option>
                             <option value="above" selected>above</option>
                         </select>
                     </th>
                     <th>Date</th>
-                    <th>Actions</th>
+                    <th class="actions">Actions</th>
                 </tr>
                 <tr>
                     <td>
@@ -169,14 +171,14 @@
                     <td>
                         <input type="date" required name="date" value="2016-05-05">
                     </td>
-                    <td>
+                    <td class="actions">
                         <button type="button">Delete</button>
                         <button type="button">Edit</button>
                     </td>
                 </tr>
-                <tr>
+                <tr class="addNew">
                     <td>
-                        <input type="text" required name="studentName" placeholder="name">
+                        <input  type="text" required name="studentName" placeholder="name">
                     </td>
                     <td>
                         <input type="number" required min="2.0" max="5.0" step="0.5" name="grade" placeholder="grade">

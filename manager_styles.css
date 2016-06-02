@@ -51,8 +51,8 @@ li {
     box-shadow: 1px 1px 4px #555;
 }
 
-.mainHeader img {
-    flex: 1 1 30dp;
+.mainHeader div {
+    flex: 1 1 4em;
     padding: 1em;
 }
 
@@ -64,7 +64,7 @@ li {
 }
 
 footer {
-    margin-top: 2em;
+    margin-top: 3em;
     background: linear-gradient(180deg, #777, #eee);
     color: white;
     font-family: Roboto;
@@ -94,7 +94,6 @@ article {
 article header {
     font-family: "Roboto Condensed";
     font-size: 1.2em;
-    font-style: bold;
     text-align: center;
 }
 
@@ -109,6 +108,20 @@ article table tr td input {
     width: 100%;
 }
 
+button {
+    border: none;
+    background: none;
+}
+
+input {
+    display: inline-block;
+}
+
+.search {
+    width: 25%;
+    text-align: right;
+}
+
 form li label {
     font-size: 12px;
 }
@@ -118,11 +131,13 @@ article table tr th input {
 }
 
 article table th {
+    vertical-align: bottom;
+    height: 30px;
+    width: 20%;
     background: #3f51bf;
     color: white;
     font-weight: 100;
-    padding: 0.4em;
-    text-align: center;
+    padding-left: 0.5em;
     margin: 0;
 }
 
@@ -145,7 +160,6 @@ article table caption {
     font-family: inherit;
     font-size: 1.2em;
     margin-bottom: 0.2em;
-    font-style: bold;
     text-align: center;
 }
 

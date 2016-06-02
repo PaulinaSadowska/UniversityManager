@@ -12,7 +12,7 @@
 
 <body>
     <header class="mainHeader">
-        <img src="logo.png" alt="university manager logo" style="width:120px;height:120px;">
+        <div><img src="logo.png" alt="university manager logo" style="width:120px;height:120px;"></div>
         <h1>University manager</h1>
     </header>
 
@@ -37,12 +37,21 @@
                 <tr>
                     <th>Id
                         <input class="search" type="number" name="index" placeholder="Search...">
+                        <button type="submit">
+                            <img src="ic_search_1x.png" />
+                        </button>
                     </th>
                     <th>Name
                         <input class="search" type="text" name="name" placeholder="Search...">
+                        <button type="submit">
+                            <img src="ic_search_1x.png" />
+                        </button>
                     </th>
                     <th>Surname
                         <input class="search" type="text" name="surname" placeholder="Search...">
+                        <button type="submit">
+                            <img src="ic_search_1x.png" />
+                        </button>
                     </th>
                     <th>Birthdate
                         <input class="search" type="text" name="date" placeholder="Search...">
@@ -51,6 +60,9 @@
                             <option value="in" selected>in</option>
                             <option value="above" selected>above</option>
                         </select>
+                        <button type="submit">
+                            <img src="ic_search_1x.png" />
+                        </button>
                     </th>
                     <th class="actions">Actions</th>
                 </tr>
@@ -101,7 +113,11 @@
                 <tr>
                     <th>Subject </th>
                     <th>Teacher
-                        <input class="search" type="text" name="name" placeholder="teacher name"> </th>
+                        <input class="search" type="text" name="name" placeholder="teacher name">
+                        <button type="submit">
+                            <img src="ic_search_1x.png" />
+                        </button>
+                    </th>
                     <th class="actions">Actions</th>
                 </tr>
                 <tr>
@@ -147,16 +163,20 @@
                 <tr>
                     <th>Student
                         <input class="search" type="text" name="name" placeholder="Search...">
+                        <button type="submit">
+                            <img src="ic_search_1x.png" />
+                        </button>
                     </th>
                     <th>Grade
                         <input class="search" type="number" required min="2.0" max="5.0" step="0.5" name="grade" value="3.0">
-                        <br>
-
                         <select class="search" name="comparator">
                             <option value="below">below</option>
                             <option value="in" selected>in</option>
                             <option value="above" selected>above</option>
                         </select>
+                        <button type="submit">
+                            <img src="ic_search_1x.png" />
+                        </button>
                     </th>
                     <th>Date</th>
                     <th class="actions">Actions</th>
@@ -178,7 +198,7 @@
                 </tr>
                 <tr class="addNew">
                     <td>
-                        <input  type="text" required name="studentName" placeholder="name">
+                        <input type="text" required name="studentName" placeholder="name">
                     </td>
                     <td>
                         <input type="number" required min="2.0" max="5.0" step="0.5" name="grade" placeholder="grade">

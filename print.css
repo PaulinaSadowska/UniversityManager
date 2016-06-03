@@ -10,7 +10,7 @@
     .search,
     .addNew,
     .actions,
-    article header{
+    article header {
         display: none;
     }
     table {
@@ -22,9 +22,13 @@
     }
     article table th {
         color: black;
+        background: white;
     }
     article table tr td input {
         text-align: center;
         width: 100%;
+    }
+    tr:nth-child(even) {
+        background-color: white;
     }
 }

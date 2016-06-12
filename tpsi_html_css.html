@@ -135,7 +135,7 @@
                         <input type="text" required placeholder="teacher name" name="teacher" data-bind="value: teacher">
                     </td>
                     <td class="actions">
-                        <a href="#gradesSection">see grades</a>
+                        <a href="#gradesSection" data-bind="click: $parent.subjects.getGrades">see grades</a>
                         <button type="button" data-bind="click: $parent.subjects.Delete">Delete</button>
                     </td>
                 </tr>
@@ -189,20 +189,24 @@
                     <th>Date</th>
                     <th class="actions">Actions</th>
                 </tr>
+                <!-- ko foreach: grades -->
                 <tr>
+
                     <td>
-                        <input type="text" required readonly name="studentName" value="Kasia">
+                        <input type="text" required readonly name="studentName" data-bind="value: student.surname">
                     </td>
                     <td>
-                        <input type="number" required min="2.0" max="5.0" step="0.5" name="grade" value="3.0">
+                        <input type="number" required min="2.0" max="5.0" step="0.5" name="grade" data-bind="value: grade">
                     </td>
                     <td>
-                        <input type="date" required name="date" value="2016-05-05">
+                        <input type="date" name="gradeDate" data-bind="value: gradeDate">
                     </td>
                     <td class="actions">
                         <button type="button">Delete</button>
                     </td>
+
                 </tr>
+                <!-- /ko -->
                 <tr class="addNew">
                     <td>
                         <input type="text" required name="studentName" placeholder="name">

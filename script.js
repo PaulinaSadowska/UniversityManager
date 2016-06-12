@@ -87,7 +87,7 @@ var DataCollection = function (url, objectId) {
         $(form).serializeArray().map(function (field) {
             data[field.name] = field.value;
         });
-        
+
         data[objectId] = null;
         self.push(ko.mapping.fromJS(data));
         $(form).each(function () {
@@ -115,7 +115,16 @@ function ViewModel() {
     self.students.get();
 
     self.subjects = new DataCollection(backendAddress + "subjects", "subjectId");
+    self.subjects.getGrades = function () {
+        window.location = "#gradesSection";
+        self.grades.selectedSubject = this.subjectId;
+        self.grades.url = backendAddress + "subjects/" + this.subjectId() + "/grades";
+        self.grades.get();
+    };
     self.subjects.get();
+
+    self.grades = new DataCollection(backendAddress + "grades", "id");
+    self.grades.selectedSubject = ko.observable();
 }
 
 var model = new ViewModel();

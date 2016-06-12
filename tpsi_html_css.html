@@ -169,7 +169,7 @@
             <table>
                 <caption>Grades</caption>
                 <tr>
-                    <th>Student
+                    <th>Student id
                         <input class="search" type="text" name="name" placeholder="Search...">
                         <button type="submit">
                             <img src="ic_search_1x.png" />
@@ -193,7 +193,7 @@
                 <tr>
 
                     <td>
-                        <input type="text" required readonly name="studentName" data-bind="value: student.surname">
+                        <input type="text" required readonly name="studentName" data-bind="value: studentId">
                     </td>
                     <td>
                         <input type="number" required min="2.0" max="5.0" step="0.5" name="grade" data-bind="value: grade">
@@ -202,7 +202,7 @@
                         <input type="date" name="gradeDate" data-bind="value: gradeDate">
                     </td>
                     <td class="actions">
-                        <button type="button">Delete</button>
+                        <button type="button" data-bind="click: $parent.grades.Delete">Delete</button>
                     </td>
 
                 </tr>

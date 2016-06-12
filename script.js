@@ -96,6 +96,7 @@ var DataCollection = function (url, objectId) {
     };
 
     self.DeleteRequest = function (object) {
+        alert(object.link);
         $.ajax({
             url: object.link,
             method: "DELETE"

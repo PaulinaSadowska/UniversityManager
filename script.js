@@ -9,7 +9,6 @@ var DataCollection = function (url, objectId) {
     var self = ko.observableArray();
     self.url = url;
     self.get = function () {
-        self.removeAll();
         $.ajax({
             url: self.url,
             dataType: "json",
@@ -17,6 +16,7 @@ var DataCollection = function (url, objectId) {
                 if (self.subscription !== undefined) {
                     self.subscription.dispose();
                 }
+                self.removeAll();
                 data.forEach(function (element, index, array) {
                     var ignored = {
                             'ignore': ["link"]
@@ -62,8 +62,6 @@ var DataCollection = function (url, objectId) {
     };
 
     self.AddRequest = function (object) {
-        alert("add" + self.url);
-        fetchedObject = object;
         $.ajax({
             url: self.url,
             dataType: "json",
@@ -79,6 +77,12 @@ var DataCollection = function (url, objectId) {
                     object[objectId](response[objectId]());
                     object.link = data.responseJSON.link.uri;
                 }
+                ko.computed(function () {
+                        return ko.toJSON(object);
+                    })
+                    .subscribe(function () {
+                        self.UpdateRequest(object);
+                    });
             }
         });
     };
@@ -118,6 +122,7 @@ function ViewModel() {
     self.subjects.getGrades = function () {
         window.location = "#gradesSection";
         self.grades.selectedSubject = this.subjectId;
+        self.grades.subjectId = this.subjectId();
         self.grades.url = backendAddress + "subjects/" + this.subjectId() + "/grades";
         self.grades.get();
     };
@@ -126,13 +131,13 @@ function ViewModel() {
     self.grades = new DataCollection(backendAddress + "grades", "studentId");
     self.grades.selectedSubject = ko.observable();
     self.grades.add = function (form) {
-        self.grades.url = backendAddress + '/subjects/' + self.grades.selectedSubject + '/grades';
+        // self.grades.url = backendAddress + '/subjects/' + self.grades.selectedSubject + '/grades';
         var data = {};
         $(form).serializeArray().map(function (field) {
             data[field.name] = field.value;
         });
-        data.subjectId = self.grades.selectedSubject;
-        data.id = null;
+        data.subjectId = self.grades.subjectId;
+        fetchedObject = data;
         self.grades.push(ko.mapping.fromJS(data));
         $(form).each(function () {
             this.reset();

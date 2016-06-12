@@ -87,7 +87,8 @@ var DataCollection = function (url, objectId) {
         $(form).serializeArray().map(function (field) {
             data[field.name] = field.value;
         });
-        data.studentId = null;
+        
+        data[objectId] = null;
         self.push(ko.mapping.fromJS(data));
         $(form).each(function () {
             this.reset();

@@ -129,7 +129,7 @@
                 <!-- ko foreach: subjects-->
                 <tr>
                     <td>
-                        <input type="text" required placeholder="sujects name" name="subjectName" data-bind="value: name">
+                        <input type="text" required placeholder="sujects name" name="subjectName" data-bind="value: subjectName">
                     </td>
                     <td>
                         <input type="text" required placeholder="teacher name" name="teacher" data-bind="value: teacher">
@@ -141,15 +141,17 @@
                 </tr>
                 <!-- /ko -->
                 <tr class="addNew">
-                    <td>
-                        <input type="text" placeholder="sujects name" name="subjectName">
-                    </td>
-                    <td>
-                        <input type="text" placeholder="teacher name" name="teacher">
-                    </td>
-                    <td>
-                        <button type="button">Add new subject</button>
-                    </td>
+                    <form data-bind="submit: subjects.add">
+                        <td>
+                            <input type="text" placeholder="sujects name" name="subjectName">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="teacher name" name="teacher">
+                        </td>
+                        <td>
+                            <button type="submit">Add new subject</button>
+                        </td>
+                    </form>
                 </tr>
             </table>
         </article>

@@ -5,10 +5,10 @@
     <link rel="stylesheet" type="text/css" href="manager_styles.css">
     <link rel="stylesheet" type="text/css" href="print.css">
     <meta charset="utf-8">
-    <script type="text/javascript" src="jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="knockout-3.4.0.js"></script>
-    <script type="text/javascript" src="knockout.mapping-latest.js"></script>
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="jquery-1.12.4.min.js" defer="defer"></script>
+    <script type="text/javascript" src="knockout-3.4.0.js" defer="defer"></script>
+    <script type="text/javascript" src="knockout.mapping-latest.js" defer="defer"></script>
+    <script type="text/javascript" src="script.js" defer="defer"></script>
     <meta name="viewport" content="width=device-width initial-scale=1">
     <title>University manager</title>
     <meta name="description" content="Page to view and manage students data.">
@@ -69,40 +69,43 @@
                     </th>
                     <th class="actions">Actions</th>
                 </tr>
+                <!-- ko foreach: students-->
                 <tr>
                     <td>
-                        <input type="number" readonly name="index" value="112160">
+                        <input type="number" readonly name="index" data-bind="value: studentId">
                     </td>
                     <td>
-                        <input type="text" required placeholder="name" name="name" value="Kasia">
+                        <input type="text" required placeholder="name" name="name" data-bind="value: firstName">
                     </td>
                     <td>
-                        <input type="text" required placeholder="surname" name="surname" value="Jakaśtam">
+                        <input type="text" required placeholder="surname" name="surname" data-bind="value: surname">
                     </td>
                     <td>
-                        <input type="date" name="date" value="1993-04-01">
+                        <input type="date" name="date" data-bind="value: birthDate">
                     </td>
                     <td class="actions">
-                        <button type="button">Delete</button>
-                        <button type="button">Edit</button>
+                        <button type="button" data-bind="click: $parent.students.Delete">Delete</button>
                     </td>
                 </tr>
+                <!-- /ko -->
                 <tr class="addNew">
-                    <td>
+                    <form data-bind="submit: students.add">
+                        <td>
 
-                    </td>
-                    <td>
-                        <input type="text" required placeholder="name" name="name">
-                    </td>
-                    <td>
-                        <input type="text" required placeholder="surname" name="surname">
-                    </td>
-                    <td>
-                        <input type="date" name="date">
-                    </td>
-                    <td>
-                        <button type="button">Add new student</button>
-                    </td>
+                        </td>
+                        <td>
+                            <input type="text" required placeholder="name" name="name">
+                        </td>
+                        <td>
+                            <input type="text" required placeholder="surname" name="surname">
+                        </td>
+                        <td>
+                            <input type="date" name="date">
+                        </td>
+                        <td>
+                            <button type="submit">Add new student</button>
+                        </td>
+                    </form>
                 </tr>
             </table>
         </article>
@@ -123,20 +126,20 @@
                     </th>
                     <th class="actions">Actions</th>
                 </tr>
+                <!-- ko foreach: subjects-->
                 <tr>
                     <td>
-                        <input type="text" required placeholder="sujects name" name="subjectName" value="Subject1">
+                        <input type="text" required placeholder="sujects name" name="subjectName" data-bind="value: name">
                     </td>
                     <td>
-                        <input type="text" required placeholder="teacher name" name="teacher" value="Mr. Jones">
+                        <input type="text" required placeholder="teacher name" name="teacher" data-bind="value: teacher">
                     </td>
                     <td class="actions">
                         <a href="#gradesSection">see grades</a>
-                        <button type="button">Delete</button>
-                        <button type="button">Edit</button>
-
+                        <button type="button" data-bind="click: $parent.subjects.Delete">Delete</button>
                     </td>
                 </tr>
+                <!-- /ko -->
                 <tr class="addNew">
                     <td>
                         <input type="text" placeholder="sujects name" name="subjectName">
@@ -196,7 +199,6 @@
                     </td>
                     <td class="actions">
                         <button type="button">Delete</button>
-                        <button type="button">Edit</button>
                     </td>
                 </tr>
                 <tr class="addNew">

@@ -26,10 +26,10 @@ var DataCollection = function (url, objectId) {
                     self.push(object);
 
                     ko.computed(function () {
-                        return ko.toJSON(object);
-                    })
+                            return ko.toJSON(object);
+                        })
                         .subscribe(function () {
-                            self.updateRequest(object);
+                            self.UpdateRequest(object);
                         });
                 });
                 if (self.subscription !== undefined) {
@@ -39,8 +39,7 @@ var DataCollection = function (url, objectId) {
                 self.subscription = self.subscribe(function (changes) {
                     changes.forEach(function (change) {
                         if (change.status === 'added') {
-                            alert("added");
-                            // self.SaveRequest(change.value);
+                            self.SaveRequest(change.value);
                         }
                         if (change.status === 'deleted') {
                             self.DeleteRequest(change.value);
@@ -51,18 +50,18 @@ var DataCollection = function (url, objectId) {
         });
     };
 
-    self.updateRequest = function (object) {
+    self.UpdateRequest = function (object) {
+        alert(ko.mapping.toJSON(object, {
+            ignore: ["link", "id", "grades", "gradesList"]
+        }));
         $.ajax({
             url: self.url,
             method: "PUT",
             dataType: "json",
             contentType: "application/json",
             data: ko.mapping.toJSON(object, {
-                ignore: ["link", "id"]
-            }),
-            success: function (data) {
-                alert(data);
-            }
+                ignore: ["link", "id", "grades", "gradesList"]
+            })
         });
     };
 

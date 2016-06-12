@@ -13,6 +13,7 @@ var DataCollection = function (url, objectId) {
         if (query) {
             paramUrl = url + query;
         }
+        alert(paramUrl);
         $.ajax({
             url: paramUrl,
             dataType: "json",
@@ -176,7 +177,6 @@ function ViewModel() {
     self.grades = new DataCollection(backendAddress + "grades", "studentId");
     self.grades.selectedSubject = ko.observable();
     self.grades.add = function (form) {
-        // self.grades.url = backendAddress + '/subjects/' + self.grades.selectedSubject + '/grades';
         var data = {};
         $(form).serializeArray().map(function (field) {
             data[field.name] = field.value;
@@ -188,6 +188,16 @@ function ViewModel() {
             this.reset();
         });
     };
+    self.grades.queryParams = {
+        studentIdQuery: ko.observable(),
+        gradeQuery: ko.observable(),
+        gradeDateQuery: ko.observable(),
+    };
+    Object.keys(self.grades.queryParams).forEach(function (key) {
+        self.grades.queryParams[key].subscribe(function () {
+            self.grades.ParseQuery();
+        });
+    });
 }
 
 var model = new ViewModel();

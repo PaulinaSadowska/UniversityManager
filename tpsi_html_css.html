@@ -49,11 +49,6 @@
                     </th>
                     <th>Birthdate
                         <input class="search" type="date" name="date" placeholder="Search..." data-bind="textInput: model.students.queryParams.birthDateQuery">
-                        <!--<select class="search" name="comparator">
-                            <option value="below">below</option>
-                            <option value="in" selected>in</option>
-                            <option value="above" selected>above</option>
-                        </select>-->
                     </th>
                     <th class="actions">Actions</th>
                 </tr>
@@ -105,7 +100,7 @@
             <table>
                 <caption>List of Subjects</caption>
                 <tr>
-                    <th>Subject 
+                    <th>Subject
                         <input class="search" type="text" name="name" placeholder="subject name" data-bind="textInput: model.subjects.queryParams.subjectNameQuery">
                     </th>
                     <th>Teacher
@@ -157,23 +152,14 @@
                 <caption>Grades</caption>
                 <tr>
                     <th>Student id
-                        <input class="search" type="text" name="name" placeholder="Search...">
-                        <button type="submit">
-                            <img src="ic_search_1x.png" />
-                        </button>
+                        <input class="search" type="text" name="name" placeholder="Search..." data-bind="textInput: model.grades.queryParams.studentIdQuery">
                     </th>
                     <th>Grade
-                        <input class="search" type="number" required min="2.0" max="5.0" step="0.5" name="grade" value="3.0">
-                        <select class="search" name="comparator">
-                            <option value="below">below</option>
-                            <option value="in" selected>in</option>
-                            <option value="above" selected>above</option>
-                        </select>
-                        <button type="submit">
-                            <img src="ic_search_1x.png" />
-                        </button>
+                        <input class="search" type="number" required min="2.0" max="5.0" step="0.5" name="grade" value="3.0" data-bind="textInput: model.grades.queryParams.gradeQuery">
                     </th>
-                    <th>Date</th>
+                    <th>Date
+                        <input class="search" type="date" name="date" placeholder="Search..." data-bind="textInput: model.grades.queryParams.gradeDateQuery">
+                    </th>
                     <th class="actions">Actions</th>
                 </tr>
                 <!-- ko foreach: grades -->

@@ -14,6 +14,9 @@ var DataCollection = function (url, objectId) {
             url: self.url,
             dataType: "json",
             success: function (data) {
+                if (self.subscription !== undefined) {
+                    self.subscription.dispose();
+                }
                 data.forEach(function (element, index, array) {
                     var ignored = {
                             'ignore': ["link"]
@@ -32,10 +35,6 @@ var DataCollection = function (url, objectId) {
                             self.UpdateRequest(object);
                         });
                 });
-                if (self.subscription !== undefined) {
-                    self.subscription.dispose();
-                }
-
                 self.subscription = self.subscribe(function (changes) {
                     changes.forEach(function (change) {
                         if (change.status === 'added') {
@@ -57,12 +56,14 @@ var DataCollection = function (url, objectId) {
             dataType: "json",
             contentType: "application/json",
             data: ko.mapping.toJSON(object, {
-                ignore: ["link", "id", "grades", "gradesList"]
+                ignore: ["link", "id", "grades", "gradesList", "student"]
             })
         });
     };
 
     self.AddRequest = function (object) {
+        alert("add" + self.url);
+        fetchedObject = object;
         $.ajax({
             url: self.url,
             dataType: "json",
@@ -96,7 +97,6 @@ var DataCollection = function (url, objectId) {
     };
 
     self.DeleteRequest = function (object) {
-        alert(object.link);
         $.ajax({
             url: object.link,
             method: "DELETE"
@@ -106,7 +106,6 @@ var DataCollection = function (url, objectId) {
     self.Delete = function () {
         self.remove(this);
     };
-
     return self;
 };
 
@@ -124,8 +123,21 @@ function ViewModel() {
     };
     self.subjects.get();
 
-    self.grades = new DataCollection(backendAddress + "grades", "id");
+    self.grades = new DataCollection(backendAddress + "grades", "studentId");
     self.grades.selectedSubject = ko.observable();
+    self.grades.add = function (form) {
+        self.grades.url = backendAddress + '/subjects/' + self.grades.selectedSubject + '/grades';
+        var data = {};
+        $(form).serializeArray().map(function (field) {
+            data[field.name] = field.value;
+        });
+        data.subjectId = self.grades.selectedSubject;
+        data.id = null;
+        self.grades.push(ko.mapping.fromJS(data));
+        $(form).each(function () {
+            this.reset();
+        });
+    };
 }
 
 var model = new ViewModel();

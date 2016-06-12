@@ -193,7 +193,7 @@
                 <tr>
 
                     <td>
-                        <input type="text" required readonly name="studentName" data-bind="value: studentId">
+                        <input type="text" required readonly name="studentId" data-bind="value: studentId">
                     </td>
                     <td>
                         <input type="number" required min="2.0" max="5.0" step="0.5" name="grade" data-bind="value: grade">
@@ -208,18 +208,20 @@
                 </tr>
                 <!-- /ko -->
                 <tr class="addNew">
-                    <td>
-                        <input type="text" required name="studentName" placeholder="name">
-                    </td>
-                    <td>
-                        <input type="number" required min="2.0" max="5.0" step="0.5" name="grade" placeholder="grade">
-                    </td>
-                    <td>
-                        <input type="date" required name="date">
-                    </td>
-                    <td>
-                        <button type="button">Add new grade</button>
-                    </td>
+                    <form data-bind="submit: grades.add">
+                        <td>
+                            <input type="text" required name="studentName" placeholder="name">
+                        </td>
+                        <td>
+                            <input type="number" required min="2.0" max="5.0" step="0.5" name="grade" placeholder="grade">
+                        </td>
+                        <td>
+                            <input type="date" required name="date">
+                        </td>
+                        <td>
+                            <button type="submit">Add new grade</button>
+                        </td>
+                    </form>
                 </tr>
             </table>
         </article>

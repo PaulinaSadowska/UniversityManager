@@ -39,33 +39,21 @@
                 <caption>List of Students</caption>
                 <tr>
                     <th>Id
-                        <input class="search" type="number" name="index" placeholder="Search...">
-                        <button type="submit">
-                            <img src="ic_search_1x.png" />
-                        </button>
+                        <input class="search" type="number" data-bind="textInput: model.students.queryParams.studentIdQuery" name="index" placeholder="Search..." value>
                     </th>
                     <th>Name
-                        <input class="search" type="text" name="name" placeholder="Search...">
-                        <button type="submit">
-                            <img src="ic_search_1x.png" />
-                        </button>
+                        <input class="search" type="text" name="name" placeholder="Search..." data-bind="textInput: model.students.queryParams.firstNameQuery">
                     </th>
                     <th>Surname
-                        <input class="search" type="text" name="surname" placeholder="Search...">
-                        <button type="submit">
-                            <img src="ic_search_1x.png" />
-                        </button>
+                        <input class="search" type="text" name="surname" data-bind="textInput: model.students.queryParams.lastNameQuery" placeholder="Search...">
                     </th>
                     <th>Birthdate
-                        <input class="search" type="text" name="date" placeholder="Search...">
-                        <select class="search" name="comparator">
+                        <input class="search" type="date" name="date" placeholder="Search..." data-bind="textInput: model.students.queryParams.birthDateQuery">
+                        <!--<select class="search" name="comparator">
                             <option value="below">below</option>
                             <option value="in" selected>in</option>
                             <option value="above" selected>above</option>
-                        </select>
-                        <button type="submit">
-                            <img src="ic_search_1x.png" />
-                        </button>
+                        </select>-->
                     </th>
                     <th class="actions">Actions</th>
                 </tr>
@@ -117,12 +105,11 @@
             <table>
                 <caption>List of Subjects</caption>
                 <tr>
-                    <th>Subject </th>
+                    <th>Subject 
+                        <input class="search" type="text" name="name" placeholder="subject name" data-bind="textInput: model.subjects.queryParams.subjectNameQuery">
+                    </th>
                     <th>Teacher
-                        <input class="search" type="text" name="name" placeholder="teacher name">
-                        <button type="submit">
-                            <img src="ic_search_1x.png" />
-                        </button>
+                        <input class="search" type="text" name="name" placeholder="teacher name" data-bind="textInput: model.subjects.queryParams.teacherNameQuery">
                     </th>
                     <th class="actions">Actions</th>
                 </tr>

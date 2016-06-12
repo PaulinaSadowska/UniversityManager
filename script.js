@@ -8,9 +8,13 @@ var fetchedObject;
 var DataCollection = function (url, objectId) {
     var self = ko.observableArray();
     self.url = url;
-    self.get = function () {
+    self.get = function (query) {
+        var paramUrl = self.url;
+        if (query) {
+            paramUrl = url + query;
+        }
         $.ajax({
-            url: self.url,
+            url: paramUrl,
             dataType: "json",
             success: function (data) {
                 if (self.subscription !== undefined) {
@@ -45,6 +49,22 @@ var DataCollection = function (url, objectId) {
                         }
                     });
                 }, null, "arrayChange");
+            },
+            error: function (data) {
+                if (self.subscription !== undefined) {
+                    self.subscription.dispose();
+                }
+                self.removeAll();
+                self.subscription = self.subscribe(function (changes) {
+                    changes.forEach(function (change) {
+                        if (change.status === 'added') {
+                            self.AddRequest(change.value);
+                        }
+                        if (change.status === 'deleted') {
+                            self.DeleteRequest(change.value);
+                        }
+                    });
+                }, null, "arrayChange");
             }
         });
     };
@@ -62,6 +82,7 @@ var DataCollection = function (url, objectId) {
     };
 
     self.AddRequest = function (object) {
+        alert("add" + self.url);
         $.ajax({
             url: self.url,
             dataType: "json",
@@ -100,6 +121,10 @@ var DataCollection = function (url, objectId) {
         });
     };
 
+    self.ParseQuery = function () {
+        self.get('/search?' + $.param(ko.mapping.toJS(self.queryParams)));
+    };
+
     self.DeleteRequest = function (object) {
         $.ajax({
             url: object.link,
@@ -116,6 +141,17 @@ var DataCollection = function (url, objectId) {
 function ViewModel() {
     var self = this;
     self.students = new DataCollection(backendAddress + "students", "studentId");
+    self.students.queryParams = {
+        studentIdQuery: ko.observable(),
+        firstNameQuery: ko.observable(),
+        lastNameQuery: ko.observable(),
+        birthDateQuery: ko.observable()
+    };
+    Object.keys(self.students.queryParams).forEach(function (key) {
+        self.students.queryParams[key].subscribe(function () {
+            self.students.ParseQuery();
+        });
+    });
     self.students.get();
 
     self.subjects = new DataCollection(backendAddress + "subjects", "subjectId");
@@ -126,6 +162,15 @@ function ViewModel() {
         self.grades.url = backendAddress + "subjects/" + this.subjectId() + "/grades";
         self.grades.get();
     };
+    self.subjects.queryParams = {
+        subjectNameQuery: ko.observable(),
+        teacherNameQuery: ko.observable()
+    };
+    Object.keys(self.subjects.queryParams).forEach(function (key) {
+        self.subjects.queryParams[key].subscribe(function () {
+            self.subjects.ParseQuery();
+        });
+    });
     self.subjects.get();
 
     self.grades = new DataCollection(backendAddress + "grades", "studentId");

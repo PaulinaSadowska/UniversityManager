@@ -39,7 +39,7 @@ var DataCollection = function (url, objectId) {
                 self.subscription = self.subscribe(function (changes) {
                     changes.forEach(function (change) {
                         if (change.status === 'added') {
-                            self.SaveRequest(change.value);
+                            self.AddRequest(change.value);
                         }
                         if (change.status === 'deleted') {
                             self.DeleteRequest(change.value);
@@ -51,9 +51,6 @@ var DataCollection = function (url, objectId) {
     };
 
     self.UpdateRequest = function (object) {
-        alert(ko.mapping.toJSON(object, {
-            ignore: ["link", "id", "grades", "gradesList"]
-        }));
         $.ajax({
             url: self.url,
             method: "PUT",
@@ -65,31 +62,32 @@ var DataCollection = function (url, objectId) {
         });
     };
 
-    self.SaveRequest = function (object) {
+    self.AddRequest = function (object) {
         $.ajax({
             url: self.url,
             dataType: "json",
             contentType: "application/json",
             data: ko.mapping.toJSON(object),
             method: "POST",
-            success: function (data) {
-                alert("success");
-                fetchedObject = data;
-                var response = ko.mapping.fromJS(data);
-                object.id = response.id;
-                if (data.link !== undefined) {
-                    object.link = response.link.uri;
+            complete: function (data) {
+                if (data.status === 201) {
+                    var ignored = {
+                            'ignore': ["link"]
+                        },
+                        response = ko.mapping.fromJS(data.responseJSON, ignored);
+                    object[objectId](response[objectId]());
+                    object.link = data.responseJSON.link.uri;
                 }
             }
         });
     };
 
     self.add = function (form) {
-        alert("add");
         var data = {};
         $(form).serializeArray().map(function (field) {
             data[field.name] = field.value;
         });
+        data.studentId = null;
         self.push(ko.mapping.fromJS(data));
         $(form).each(function () {
             this.reset();

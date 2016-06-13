@@ -82,7 +82,6 @@ var DataCollection = function (url, objectId) {
     };
 
     self.AddRequest = function (object) {
-        alert("add" + self.url);
         $.ajax({
             url: self.url,
             dataType: "json",
@@ -190,7 +189,7 @@ function ViewModel() {
     self.grades.queryParams = {
         studentIdQuery: ko.observable(),
         gradeQuery: ko.observable(),
-        gradeDateQuery: ko.observable(),
+        gradeDateQuery: ko.observable()
     };
     Object.keys(self.grades.queryParams).forEach(function (key) {
         self.grades.queryParams[key].subscribe(function () {

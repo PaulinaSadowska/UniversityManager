@@ -11,9 +11,8 @@ var DataCollection = function (url, objectId) {
     self.get = function (query) {
         var paramUrl = self.url;
         if (query) {
-            paramUrl = url + query;
+            paramUrl = self.url + query;
         }
-        alert(paramUrl);
         $.ajax({
             url: paramUrl,
             dataType: "json",

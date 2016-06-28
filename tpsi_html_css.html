@@ -83,7 +83,7 @@
                             <input type="text" required placeholder="surname" name="surname">
                         </td>
                         <td>
-                            <input type="date" name="birthDate">
+                            <input type="date" required name="birthDate">
                         </td>
                         <td>
                             <button type="submit">Add new student</button>
@@ -125,10 +125,10 @@
                 <tr class="addNew">
                     <form data-bind="submit: subjects.add">
                         <td>
-                            <input type="text" placeholder="sujects name" name="subjectName">
+                            <input type="text" required placeholder="sujects name" name="subjectName">
                         </td>
                         <td>
-                            <input type="text" placeholder="teacher name" name="teacher">
+                            <input type="text" required placeholder="teacher name" name="teacher">
                         </td>
                         <td>
                             <button type="submit">Add new subject</button>
@@ -148,7 +148,7 @@
                         <input class="search" type="text" name="name" placeholder="Search..." data-bind="textInput: model.grades.queryParams.studentIdQuery">
                     </th>
                     <th>Grade
-                        <input class="search" type="number" required min="2.0" max="5.0" step="0.5" name="grade" value="3.0" data-bind="textInput: model.grades.queryParams.gradeQuery">
+                        <input class="search" type="number" placeholder="Search..." required min="2.0" max="5.0" step="0.5" name="grade" value="3.0" data-bind="textInput: model.grades.queryParams.gradeQuery">
                     </th>
                     <th>Date
                         <input class="search" type="date" name="date" placeholder="Search..." data-bind="textInput: model.grades.queryParams.gradeDateQuery">

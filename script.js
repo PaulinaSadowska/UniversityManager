@@ -139,6 +139,7 @@ var DataCollection = function (url, objectId) {
 
 function ViewModel() {
     var self = this;
+
     self.students = new DataCollection(backendAddress + "students", "studentId");
     self.students.queryParams = {
         studentIdQuery: ko.observable(),
@@ -152,7 +153,7 @@ function ViewModel() {
         });
     });
     self.students.get();
-
+    
     self.subjects = new DataCollection(backendAddress + "subjects", "subjectId");
     self.subjects.getGrades = function () {
         window.location = "#gradesSection";
